@@ -10,30 +10,8 @@
 
 <body>
   <div>hello world!</div>
+  <word-count text='你好哇' />
 </body>
-<script>
-  var memory = new WebAssembly.Memory({
-    initial: 10
-  });
-
-  fetch('./wasm/optimized.wasm').then(response =>
-    response.arrayBuffer()
-  ).then(bypes => {
-    var res = WebAssembly.instantiate(bypes, {
-      env: {
-        memory: new WebAssembly.Memory({
-          initial: 1
-        }),
-        abort: function () {
-          throw Error("abort called");
-        }
-      }
-    })
-    return res
-  }).then(result => {
-    var sum = result.instance.exports.add(1, 2)
-    console.log(sum)
-  })
-</script>
+<script src="./components/WordCount.js"></script>
 
 </html>
