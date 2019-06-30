@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>hello world!</div>
+</body>
+<script>
+  var memory = new WebAssembly.Memory({
+    initial: 10
+  });
+
+  fetch('./wasm/optimized.wasm').then(response =>
+    response.arrayBuffer()
+  ).then(bypes => {
+    var res = WebAssembly.instantiate(bypes, {
+      env: {
+        memory: new WebAssembly.Memory({
+          initial: 1
+        }),
+        abort: function () {
+          throw Error("abort called");
+        }
+      }
+    })
+    return res
+  }).then(result => {
+    var sum = result.instance.exports.add(1, 2)
+    console.log(sum)
+  })
+</script>
+
+</html>
