@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="text" src="" alt="">
+  <span></span>
+</body>
+<script>
+  let obj = {};
+  const input = document.querySelector('input')
+  const span = document.querySelector('span')
+
+  Object.defineProperty(obj, 'text', {
+    configurable: true,
+    enumerable: true,
+    get() {
+      console.log('获取到数据了')
+      return obj.text
+    },
+    set(newVal) {
+      console.log('数据更新了')
+      input.value = newVal
+      span.innerHTML = newVal
+    }
+  })
+  input.addEventListener('keyup', (e) => {
+    span.innerHTML = e.target.value;
+  })
+
+</script>
+
+</html>
