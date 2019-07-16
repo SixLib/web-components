@@ -5,9 +5,10 @@ customElements.define('element-details',
       var template = document
         .getElementById('element-details-template')
         .content;
+      // eslint-disable-next-line no-unused-vars
       const shadowRoot = this.attachShadow({
-          mode: 'open'
-        })
+        mode: 'open'
+      })
         .appendChild(template.cloneNode(true));
     }
-  })
+  });

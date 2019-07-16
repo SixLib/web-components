@@ -1,0 +1,38 @@
+{
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module"
+  },
+  "globals":{
+    "HTMLParagraphElement":true,
+    "customElements":true,
+    "HTMLElement":true,
+    "document":true
+  },
+  "rules": {
+
+    "indent": [
+      "error",
+      2
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "no-console": 0, //手动添加
+    "eqeqeq": 2 //手动添加
+  }
+}

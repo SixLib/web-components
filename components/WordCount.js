@@ -1,6 +1,7 @@
 class WordCount extends HTMLParagraphElement {
   constructor() {
-    super()
+    super();
+    // eslint-disable-next-line no-unused-vars
     const wcParent = this.parentNode;
 
     function countWords(node) {
@@ -26,6 +27,7 @@ class WordCount extends HTMLParagraphElement {
   connectedCallback() {
     // Update count when element content changes
     setInterval(function () {
+      // eslint-disable-next-line no-undef
       const count = `Words: ${this.countWords(wcParent)}`;
       this.text.textContent = count;
     }, 200);
